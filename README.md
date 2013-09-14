@@ -1,4 +1,3 @@
-
 check out the repo
 
 Required module PHP,php-mysql,mod_rewrite apache 
@@ -24,6 +23,11 @@ RewriteRule ^(.*)$ index.php?url=$1 [PT,L]
 </IfModule> 
 
 you can also place the above rules in apache conf(vhost conf).
+
+
+USED
+RainTPL template engine reference(http://www.raintpl.com/);
+custom MVC frame work.
 
 
 TODOS:
