@@ -9,7 +9,7 @@ class ProductsController extends BaseController {
 
   function index() {
     $this->set('title', 'All Products - Productlist');
-    $this->set('searchterm',0);
+    $this->set('searchterm', 0);
     $this->View('products/search');
 //$this->set('products', $this->Item->selectAll());
   }
@@ -82,7 +82,7 @@ class ProductsController extends BaseController {
   }
 
   function search() {
-    $key=$_POST['find'];
+    $key = $_POST['find'];
     $search_key = trim($key); //remove white spaces
     $search_key = htmlspecialchars($key);
     $search_key = strtoupper($search_key);
@@ -97,16 +97,19 @@ class ProductsController extends BaseController {
 
   function details($id) {
     if ((int) ($id) > 0) {
-      $related=FALSE;
+      $related = FALSE;
       $product = $this->Product->query("SELECT prod.name as name,prod.store,prod.group_id,prod.price,prod.shipping_duration,sub.name as sub_category,cat.name as category FROM `product` as prod join category as sub on prod.category_id=sub.id join category cat on sub.parent=cat.id  where prod.id=$id");
-      //print_r($product);
-      $group_id = $product[0]['Prod']['group_id'];
-      if (!empty($group_id)) {
-        $related = $this->Product->query("SELECT * from product where group_id='$group_id' AND id !=$id");
+      if (!empty($product)) {
+        $group_id = $product[0]['Prod']['group_id'];
+        if (!empty($group_id)) {
+          $related = $this->Product->query("SELECT * from product where group_id='$group_id' AND id !=$id");
+        }
+        $this->set('product', $product);
+        $this->set('related', $related);
+        $this->View('products/details');
+      }else{
+        $this->View('error');
       }
-      $this->set('product', $product);
-      $this->set('related', $related);
-      $this->View('products/details');
     }
   }
 
