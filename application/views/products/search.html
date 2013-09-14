@@ -1,0 +1,20 @@
+<h2>Search:</h2> 
+<form name="search" method="post" action="/products/search/">
+  Your search : <input type="text" name="find" /> 
+  <!--  <input type="hidden" name="searching" value="yes" />-->
+  <input type="submit" name="search" value="Search" />
+</form>
+{if="$searchterm"}<h2>Search term:{$searchterm}</h2>
+<div>
+  {loop="ser_result"}
+  <div>
+    <a href="/products/details/{$value.Product.id}">{$value.Product.name}</a>
+
+  </div>
+  {else}
+  <p>
+    No results to display.Try with new keyword
+  </p>
+  {/loop}
+</div>
+{/if}

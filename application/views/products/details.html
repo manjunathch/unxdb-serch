@@ -1,0 +1,16 @@
+{include="header"}
+<div id="detail">
+  <p>Name:{$product.0.Prod.name}</p>
+  <p>Category:{$product.0.Cat.category}</p>
+  <p>Sub-Category{$product.0.Sub.sub_category}</p>
+  <p>Price:{$product.0.Prod.price}</p>
+  <p>Shipping-duration:{$product.0.Prod.shipping_duration}</p>
+  <p>Store:{$product.0.Prod.store}</p>  
+</div>
+<div class="related">
+  <p>Related Product</p>
+  {loop="related"}
+  <p><a href="/products/details/{$value.Product.id}">{$value.Product.name}</a></p>
+{/loop}
+</div>
+{include="footer"}
