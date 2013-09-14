@@ -53,7 +53,7 @@ function callHook() {
   $urlArray = array();
   $urlArray = explode("/", $url);
   //print_r($urlArray);
-  $controller = $urlArray[0];
+  $controller = empty($urlArray[0])?'products':$urlArray[0];
   array_shift($urlArray);
   $action = empty($urlArray[0])?'index':$urlArray[0];
   array_shift($urlArray);

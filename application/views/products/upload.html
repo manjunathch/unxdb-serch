@@ -1,0 +1,19 @@
+{include="header"}
+<form action="/products/postupload" method="post"
+      enctype="multipart/form-data" onsubmit="return validate();">
+  <label for="file">Filename:</label>
+  <input type="file" id="file_id" name="file" id="file"><br>
+  <input type="submit" name="submit" value="Submit">
+</form>
+<script type="text/javascript">
+        function validate() {
+          var len = document.getElementById('file_id').value.length;
+          if (len < 3) {
+            alert('File name is required');
+            return false;
+          } else {
+            return true;
+          }
+        }
+</script>
+{include="footer"}

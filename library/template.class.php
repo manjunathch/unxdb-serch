@@ -12,7 +12,7 @@
  */
 raintpl::configure("base_url", null);
 raintpl::configure("tpl_dir", ROOT.'/application/views/');
-raintpl::configure("cache_dir", "tmp/");
+raintpl::configure("cache_dir", ROOT.'/application/tmp/');
 
 class Template extends RainTPL {
 
@@ -31,21 +31,8 @@ class Template extends RainTPL {
   }
 
   /** Display Template * */
-  function render($view) {
-    //extract($this->variables);
-//    if (file_exists(ROOT . DS . 'application' . DS . 'views' . DS . $this->_controller . DS . 'header.php')) {
-//      include (ROOT . DS . 'application' . DS . 'views' . DS . $this->_controller . DS . 'header.php');
-//    } else {
-//      include (ROOT . DS . 'application' . DS . 'views' . DS . 'header.php');
-//    }
-
+  function render($view) { 
     $this->draw($view);
-
-//    if (file_exists(ROOT . DS . 'application' . DS . 'views' . DS . $this->_controller . DS . 'footer.php')) {
-//      include (ROOT . DS . 'application' . DS . 'views' . DS . $this->_controller . DS . 'footer.php');
-//    } else {
-//      include (ROOT . DS . 'application' . DS . 'views' . DS . 'footer.php');
-//    }
   }
 
 }

@@ -1,6 +1,7 @@
+{include="header"}
 <h2>Search:</h2> 
-<form name="search" method="post" action="/products/search/">
-  Your search : <input type="text" name="find" /> 
+<form name="search" method="post" action="/products/search/" onsubmit="return validate();">
+  Your search : <input type="text" id="search" name="find" /> 
   <!--  <input type="hidden" name="searching" value="yes" />-->
   <input type="submit" name="search" value="Search" />
 </form>
@@ -18,3 +19,15 @@
   {/loop}
 </div>
 {/if}
+<script type="text/javascript">
+  function validate() {
+    var len = document.getElementById("search").value.length;
+    if (len < 2) {
+      alert('Search string should be atlease three characters');
+      return false;
+    } else {
+      return true;
+    }
+  }
+</script>
+{include="footer"}
